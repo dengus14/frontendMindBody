@@ -1,15 +1,37 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import "../Register/Register.css"
 
 function Register() {
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ username, email, password });
-    // TODO: Send to backend
+    setError('');
+    setLoading(true);
+
+    if (!authContext) {
+      setError('Authentication context not available');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await authContext.register(username, email, password);
+      navigate('/dashboard');
+    } catch (err: any) {
+      setError(err.message || 'Registration failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +90,11 @@ function Register() {
           />
         </div>
 
-        <button className="registerButton" type="submit">Register</button>
+        {error && <div className="errorMessage">{error}</div>}
+
+        <button className="registerButton" type="submit" disabled={loading}>
+          {loading ? 'Registering...' : 'Register'}
+        </button>
 
         <div className='alreadyReg'>
           Already registered? <a href="/login">Login here</a>

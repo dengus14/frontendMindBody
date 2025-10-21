@@ -1,17 +1,39 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import "../Login/Login.css"
 
 function Login() {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ username, password });
-    // TODO: Send to backend
+    setError('');
+    setLoading(true);
+
+    if (!authContext) {
+      setError('Authentication context not available');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await authContext.login(username, password);
+      navigate('/dashboard');
+    } catch (err: any) {
+      setError(err.message || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleusernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
 
@@ -30,12 +52,12 @@ function Login() {
         <div className='formField'>
           <label htmlFor="username">Username</label>
           <input
-            type="text"
+            type="username"
             id="username"
             value={username}
-            onChange={handleUsernameChange}
+            onChange={handleusernameChange}
             required
-            placeholder='Enter Username'
+            placeholder='Enter username'
           />
         </div>
 
@@ -51,7 +73,11 @@ function Login() {
           />
         </div>
 
-        <button className="registerButton" type="submit">Register</button>
+        {error && <div className="errorMessage">{error}</div>}
+
+        <button className="registerButton" type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
 
         <div className='alreadyReg'>
           Don't have an account ? <a href="/register">Register here</a>

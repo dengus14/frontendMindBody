@@ -1,0 +1,40 @@
+.dashboardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #18191C;
+}
+
+.dashboardContent {
+  text-align: center;
+  color: #ffffff;
+  padding: 40px;
+}
+
+.dashboardContent h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.dashboardContent p {
+  font-size: 18px;
+  margin-bottom: 32px;
+  color: #bfc4d3;
+}
+
+.logoutButton {
+  padding: 12px 24px;
+  background-color: #1A5CFF;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.logoutButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(26, 92, 255, 0.3);
+}
