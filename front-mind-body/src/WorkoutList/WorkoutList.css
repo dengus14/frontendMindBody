@@ -7,6 +7,29 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+.addWorkoutButton {
+  display: inline-block;
+  background: #1A5CFF;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.addWorkoutButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(26, 92, 255, 0.3);
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
 .workoutListTitle {
   color: #ffffff;
   font-size: 20px;
@@ -60,11 +83,22 @@
 }
 
 .workoutDetails {
-  padding: 0 16px 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  animation: slideDown 400ms ease;
+  
+  /* Collapsed state by default */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 16px;
+  transition: max-height 400ms ease, opacity 300ms ease, padding 400ms ease;
+}
+
+.workoutDetails.expanded {
+  max-height: 300px;
+  opacity: 1;
+  padding: 0 16px 14px 16px;
 }
 
 @keyframes slideDown {
