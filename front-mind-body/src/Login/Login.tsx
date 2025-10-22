@@ -43,6 +43,7 @@ function Login() {
 
   return (
     <div className='mainRegisterDiv'>
+
         <div className="registerTop">
             <h1 className='registerText'>Log into your account</h1>
             <h3 className='registerSub'>Welcome Back! We are excited to see you again </h3>

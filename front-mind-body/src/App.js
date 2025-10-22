@@ -1,6 +1,7 @@
 import Register from "../src/Register/Register.tsx";
 import Login from "./Login/Login.tsx";
 import Dashboard from "./Dashboard/Dashboard.tsx";
+import Header from "./Header/Header.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 function App() {
   return (
     <AuthProvider>
+      <Header />
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
