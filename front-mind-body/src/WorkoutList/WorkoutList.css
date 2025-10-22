@@ -74,12 +74,12 @@
 .expandIcon {
   color: #5B657E;
   font-size: 12px;
-  transition: transform 200ms ease;
+  transition: transform 200ms ease-in-out;
 }
 
 .expandIcon.expanded {
-  transform: rotate(90deg);
-
+  transform: rotate(180deg);
+  transition: transform 600ms ease;
 }
 
 .workoutDetails {
@@ -92,7 +92,7 @@
   opacity: 0;
   overflow: hidden;
   padding: 0 16px;
-  transition: max-height 400ms ease, opacity 300ms ease, padding 400ms ease;
+  transition: max-height 800ms ease, opacity 800ms ease, padding 800ms ease;
 }
 
 .workoutDetails.expanded {
