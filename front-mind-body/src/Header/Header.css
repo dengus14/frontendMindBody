@@ -4,7 +4,6 @@
   padding: 15px 20px;
   display: flex;
   align-items: center;
-  /* removed justify-content: space-between */
 }
 
 .header-center {
@@ -20,14 +19,12 @@
   border-radius: 8px;         
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   display: block;
-  margin-right: 0; /* logo takes natural space */
 }
 
 .global-header-nav {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-left: 0; /* nav takes natural space */
 }
 
 .headerButton {
