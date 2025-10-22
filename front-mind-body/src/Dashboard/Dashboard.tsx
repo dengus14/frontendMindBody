@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import WorkoutList from '../WorkoutList/WorkoutList';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -16,14 +17,11 @@ function Dashboard() {
 
   return (
     <div className="dashboardContainer">
-      <div className="dashboardContent">
-        <h1>Welcome to Dashboard</h1>
-        <p>You are successfully logged in!</p>
-        {authContext?.user && (
-          <p style={{ color: '#bfc4d3' }}>
-            Logged in as: {authContext.user.username}
-          </p>
-        )}
+      <div className="dashboardLayout">
+        <WorkoutList />
+        <div className="dashboardContent">
+          {/* Main content area */}
+        </div>
       </div>
     </div>
   );

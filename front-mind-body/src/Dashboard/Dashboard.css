@@ -1,12 +1,25 @@
 .dashboardContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 30px;   
   min-height: 100vh;
   background-color: #18191C;
 }
 
+.dashboardLayout {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 20px;
+  padding-left: 40px;
+  margin: 0 auto;
+  margin-left: 0;
+}
+
 .dashboardContent {
+  flex: 1;
   text-align: center;
   color: #ffffff;
   padding: 40px;

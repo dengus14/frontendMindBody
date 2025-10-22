@@ -1,0 +1,115 @@
+.workoutListContainer {
+  border-radius: 12px;
+  padding: 20px;
+  width: 320px;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.workoutListTitle {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.workoutList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.workoutItem {
+  background-color: #181B22;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background-color 150ms ease;
+}
+
+.workoutItem:hover {
+  background-color: #1d2129;
+}
+
+.workoutHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.workoutName {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.expandIcon {
+  color: #5B657E;
+  font-size: 12px;
+  transition: transform 200ms ease;
+}
+
+.expandIcon.expanded {
+  transform: rotate(90deg);
+
+}
+
+.workoutDetails {
+  padding: 0 16px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: slideDown 400ms ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.detailLabel {
+  color: #5B657E;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+}
+
+.detailValue {
+  color: #bfc4d3;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+}
+
+.workoutListContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.workoutListContainer::-webkit-scrollbar-track {
+  background: #181B22;
+  border-radius: 10px;
+}
+
+.workoutListContainer::-webkit-scrollbar-thumb {
+  background: #363F54;
+  border-radius: 10px;
+}
+
+.workoutListContainer::-webkit-scrollbar-thumb:hover {
+  background: #4a5568;
+}

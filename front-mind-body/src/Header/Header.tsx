@@ -28,8 +28,18 @@ const Header = () => {
   return (
     <header className="global-header">
       <img className="logo" src={Logo1} alt="Logo" />
+      <div className="header-center">
+            {isAuthenticated && isDashboard && (
+          <h2>
+            Welcome to your Cave!
+          </h2>
+        )}
+        </div>
 
       <nav className="global-header-nav">
+
+        
+
        
         {isAuthenticated && (
           <button className="headerButton logoutBtn" onClick={handleLogout}>
@@ -50,6 +60,8 @@ const Header = () => {
             Login
           </button>
         )}
+        
+        
       </nav>
     </header>
   );
