@@ -1,4 +1,3 @@
-/* Header.css */
 .global-header {
   background-color: #181B22;
   color: white;
@@ -8,13 +7,44 @@
   align-items: center;
 }
 
-.global-header-title {
-  font-size: 1.5em;
-  font-weight: bold;
+.global-header .logo{
+  width: 70px;
+  height: 62px;
+  object-fit: cover;           
+  border: 2px solid #ffffff;   
+  border-radius: 8px;         
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: block;
 }
 
-.global-header-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
+.global-header-nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.headerButton {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: background 150ms ease, transform 100ms ease;
+}
+
+.headerButton:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.05);
+}
+
+.logoutBtn {
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+}
+
+.logoutBtn:hover {
+  background: rgba(255,77,77,0.1);
 }

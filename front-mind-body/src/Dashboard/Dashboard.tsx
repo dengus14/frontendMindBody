@@ -19,9 +19,11 @@ function Dashboard() {
       <div className="dashboardContent">
         <h1>Welcome to Dashboard</h1>
         <p>You are successfully logged in!</p>
-        <button className="logoutButton" onClick={handleLogout}>
-          Logout
-        </button>
+        {authContext?.user && (
+          <p style={{ color: '#bfc4d3' }}>
+            Logged in as: {authContext.user.username}
+          </p>
+        )}
       </div>
     </div>
   );
