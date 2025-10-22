@@ -1,75 +1,56 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import { login as loginService, register as registerService, logout as logoutService, getAccessToken } from '../services/authService';
+import React, { createContext, useState, ReactNode } from 'react';
+import { login as loginReq, register as registerReq, logout as logoutReq } from '../services/authService';
 
 interface User {
-  id?: string;
   username?: string;
   email?: string;
+  [key: string]: any;
 }
 
 interface AuthContextType {
   user: User | null;
+  setUser: (user: User | null) => void;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (username: string, email: string, password: string) => Promise<void>;
+  login: (creds: { username: string; password: string }) => Promise<any>;
+  register: (payload: { username: string; email: string; password: string }) => Promise<any>;
   logout: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // On app start, check if token exists in memory (will be null after page refresh)
-    const initAuth = () => {
-      const token = getAccessToken();
-      if (token) {
-        setUser({ id: 'authenticated' });
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
-    };
-
-    initAuth();
-  }, []);
-
-  const login = async (username: string, password: string) => {
+  const login = async (creds: { username: string; password: string }) => {
+    setLoading(true);
     try {
-      const data = await loginService({ username, password });
-      setUser(data.user || { id: 'authenticated' });
-    } catch (error: any) {
-      throw new Error(error.message || 'Login failed');
+      const data = await loginReq(creds);
+      setUser(data.user); // Set the user from response
+      return data;
+    } finally {
+      setLoading(false);
     }
   };
 
-  const register = async (username: string, email: string, password: string) => {
+  const register = async (payload: { username: string; email: string; password: string }) => {
+    setLoading(true);
     try {
-      const data = await registerService({ username, email, password });
-      setUser(data.user || { id: 'authenticated' });
-    } catch (error: any) {
-      throw new Error(error.message || 'Registration failed');
+      const data = await registerReq(payload);
+      setUser(data.user); // Set the user from response
+      return data;
+    } finally {
+      setLoading(false);
     }
   };
 
   const logout = async () => {
-    try {
-      await logoutService();
-    } catch (error) {
-      console.error('Logout error:', error);
-    } finally {
-      setUser(null);
-    }
+    await logoutReq();
+    setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, setUser, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

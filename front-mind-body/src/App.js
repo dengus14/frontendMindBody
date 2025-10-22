@@ -9,8 +9,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 function App() {
   return (
     <AuthProvider>
-      <Header />
       <Router>
+        <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

@@ -25,7 +25,7 @@ function Register() {
     }
 
     try {
-      await authContext.register(username, email, password);
+      await authContext.register({username, email, password});
       navigate('/dashboard');
     } catch (err: any) {
       setError('Registration failed. Please try again.');

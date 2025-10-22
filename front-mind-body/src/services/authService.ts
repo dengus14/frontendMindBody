@@ -1,77 +1,69 @@
-// Centralized auth service for login, register, refresh, logout
+// In-memory access token storage
 let accessToken: string | null = null;
 
-export const setAccessToken = (token: string | null) => {
-  accessToken = token;
+export const setAccessToken = (token: string | null) => { 
+  accessToken = token; 
 };
 
 export const getAccessToken = () => accessToken;
 
-const API_BASE = 'http://localhost:8080/api/auth';
-
-interface RegisterPayload {
-  username: string;
-  email: string;
-  password: string;
-}
-
-interface LoginPayload {
-  username: string;
-  password: string;
-}
-
-interface AuthResponse {
-  accessToken: string;
-  user?: any;
-}
-
-/** Register new user */
-export async function register(payload: RegisterPayload): Promise<AuthResponse> {
-  const res = await fetch(`${API_BASE}/register`, {
+/** Register */
+export async function register(payload: { username: string; email: string; password: string; }) {
+  const res = await fetch('http://localhost:8080/api/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
   
   if (!res.ok) {
-    const error = await res.text();
-    throw new Error(error || 'Registration failed');
+    const errorText = await res.text();
+    throw new Error(errorText || 'Registration failed');
   }
   
   const data = await res.json();
-  // Assuming backend returns JWT token in response
-  if (data.token) {
-    setAccessToken(data.token);
-  } else if (data.accessToken) {
-    setAccessToken(data.accessToken);
+  
+  
+  const token = data.token || data.accessToken;
+  if (token) {
+    setAccessToken(token);
   }
-  return data;
+  
+  
+  return { 
+    token, 
+    user: { username: payload.username, email: payload.email } 
+  };
 }
 
-/** Login user */
-export async function login(payload: LoginPayload): Promise<AuthResponse> {
-  const res = await fetch(`${API_BASE}/login`, {
+/** Login */
+export async function login(payload: { username: string; password: string; }) {
+  const res = await fetch('http://localhost:8080/api/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
   
   if (!res.ok) {
-    const error = await res.text();
-    throw new Error(error || 'Login failed');
+    const errorText = await res.text();
+    throw new Error(errorText || 'Login failed');
   }
   
   const data = await res.json();
-
-  if (data.token) {
-    setAccessToken(data.token);
-  } else if (data.accessToken) {
-    setAccessToken(data.accessToken);
+  
+  
+  const token = data.token 
+  if (token) {
+    setAccessToken(token);
   }
-  return data;
+  
+  // If backend returns user data, use it; otherwise create minimal user object
+  return { 
+    token, 
+    user: data.user || { username: payload.username } 
+  };
 }
 
-/** Logout user - just clear token from memory */
-export async function logout(): Promise<void> {
+/** Logout */
+export async function logout() {
   setAccessToken(null);
 }
