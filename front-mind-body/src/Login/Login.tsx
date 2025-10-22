@@ -27,7 +27,7 @@ function Login() {
       await authContext.login(username, password);
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err.message || 'Login failed. Please try again.');
+      setError('Login failed. Please try again.');
     } finally {
       setLoading(false);
     }
