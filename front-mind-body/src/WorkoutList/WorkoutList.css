@@ -6,28 +6,80 @@
   overflow-y: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+.workoutActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
 
-.addWorkoutButton {
-  display: inline-block;
-  background: #1A5CFF;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 6px;
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition: background 150ms ease, transform 150ms ease;
 }
+
+.iconButton:hover {
+  transform: scale(1.1);
+}
+
+.editIcon {
+  background-color: rgba(26, 92, 255, 0.2);
+  color: #3F90FF;
+}
+
+.editIcon:hover {
+  background-color: rgba(26, 92, 255, 0.35);
+}
+
+.deleteIcon {
+  background-color: rgba(255, 77, 77, 0.15);
+  color: #ff4d4d;
+}
+
+.deleteIcon:hover {
+  background-color: rgba(255, 77, 77, 0.3);
+}
+
+.addWorkoutButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background-color: rgba(26, 92, 255, 0.2);  /* same tone as editIcon */
+  color: #3F90FF;
+  border: none;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.addWorkoutButton:hover {
+  background-color: rgba(26, 92, 255, 0.35);
+  transform: scale(1.08);
+}
+
 
 .addWorkoutButton:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(26, 92, 255, 0.3);
 }
-
+.addWorkoutButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(26, 92, 255, 0.3);
+}
 .buttonContainer{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
 }
 
 .workoutListTitle {
@@ -78,7 +130,7 @@
 }
 
 .expandIcon.expanded {
-  transform: rotate(90deg);
+  transform: rotate(-120deg);
 
 }
 

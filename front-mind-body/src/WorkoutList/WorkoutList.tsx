@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './WorkoutList.css'
 
+import { Plus, Edit3, Trash2 } from 'lucide-react';
+
 import { fetchWorkouts as getWorkouts, addWorkout, Workout, WorkoutType,updateWorkout, deleteWorkout} from '../services/workoutService';
 import { AuthContext } from '../context/AuthContext';
 import AddWorkoutModal from './AddWorkoutModal/AddWorkoutModal';
@@ -108,7 +110,10 @@ const handleDeleteWorkout = async (id: number) => {
     <div className="workoutListContainer">
       <div className='buttonContainer'>
         <h2 className="workoutListTitle">Recent Workouts</h2>
-        <button className="addWorkoutButton" onClick={openModal}>Add Workout</button>
+       <button className="addWorkoutButton" onClick={openModal} title="Add Workout">
+        <Plus size={18} strokeWidth={2.2} />
+        </button>
+ 
       </div>
 
       <div className="workoutList">
@@ -139,12 +144,24 @@ const handleDeleteWorkout = async (id: number) => {
                 <span className="detailLabel">Notes:</span>
                 <span className="detailValue">{workout.notes || 'No notes'}</span>
               </div>
-              <div className='editButton'>
-             <button className="addWorkoutButton" onClick={()=>openEditModal(workout)}>Edit Workout</button>
-             <button className="cancelButton" onClick={() => handleDeleteWorkout(workout.id)}>
-              Delete
+              <div className="workoutActions">
+              <button 
+                className="iconButton editIcon" 
+                onClick={() => openEditModal(workout)} 
+                title="Edit Workout"
+              >
+                <Edit3 size={18} strokeWidth={2.2} />
+              </button>
+
+              <button 
+                className="iconButton deleteIcon" 
+                onClick={() => handleDeleteWorkout(workout.id)} 
+                title="Delete Workout"
+              >
+                <Trash2 size={18} strokeWidth={2.2} />
               </button>
               </div>
+
 
             </div>
           </div>
