@@ -4,7 +4,7 @@ import './AddWorkoutModal.css';
 interface AddWorkoutModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: { workoutType: string; durationMinutes: number }) => Promise<void>;
+  onSubmit: (data: { workoutType: string; durationMinutes: number , notes?: string}) => Promise<void>;
 }
 
 const AddWorkoutModal: React.FC<AddWorkoutModalProps> = ({ isOpen, onClose, onSubmit }) => {
