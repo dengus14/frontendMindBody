@@ -69,12 +69,9 @@
 
 .addWorkoutButton:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(26, 92, 255, 0.3);
+ 
 }
-.addWorkoutButton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(26, 92, 255, 0.3);
-}
+
 .buttonContainer{
     display: flex;
     justify-content: space-between;
