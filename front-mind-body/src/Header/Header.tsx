@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { User } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "../Header/Header.css";
@@ -39,13 +40,25 @@ const Header = () => {
       <nav className="global-header-nav">
 
         
+    
 
        
-        {isAuthenticated && (
+              {isAuthenticated && (
+        <>
+          <button 
+            className="userIcon" 
+            onClick={() => navigate("/profile")}
+            title="Profile"
+          >
+            <User size={30} strokeWidth={2.5} />
+          </button>
+
           <button className="headerButton logoutBtn" onClick={handleLogout}>
             Logout
           </button>
-        )}
+        </>
+      )}
+
 
         
         {!isAuthenticated && isLoginPage && (
