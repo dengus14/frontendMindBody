@@ -58,7 +58,7 @@ function Login() {
             value={username}
             onChange={handleusernameChange}
             required
-            placeholder='Enter username'
+            placeholder='Enter Username'
           />
         </div>
 
