@@ -25,6 +25,12 @@ export interface User{
     last_workout?: string | Date;
 }
 
+export interface EditWorkoutDTO {
+  id: number;
+  workoutType: WorkoutType;
+  durationMinutes: number;
+  notes: string;
+}
 
 function formatDateToLocalDate(value?: string | Date): string | undefined {
     if (!value) return undefined;
@@ -79,4 +85,14 @@ export async function addWorkout(payload: AddWorkoutDTO): Promise<string> {
         throw err;
     }
 }
+export async function updateWorkout(payload: EditWorkoutDTO): Promise<void> {
+  await api.put('/editWorkout', payload);
+}
+
+export async function deleteWorkout(id: number): Promise<void> {
+  await api.delete('/delWorkout', {
+    data: { id }, 
+  });
+}
+
 

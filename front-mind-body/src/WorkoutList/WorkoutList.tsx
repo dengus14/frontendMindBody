@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './WorkoutList.css'
 
-import { fetchWorkouts as getWorkouts, addWorkout, Workout, WorkoutType} from '../services/workoutService';
+import { fetchWorkouts as getWorkouts, addWorkout, Workout, WorkoutType,updateWorkout, deleteWorkout} from '../services/workoutService';
 import { AuthContext } from '../context/AuthContext';
 import AddWorkoutModal from './AddWorkoutModal/AddWorkoutModal';
+import EditWorkoutModal from './EditWorkoutModal/EditWorkoutModal';
 
 
 const WorkoutList = () => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedWorkout, setSelectedWorkout] = useState<Workout | null>(null);
+
   const authContext = useContext(AuthContext);
   const openModal = () => {
   setExpandedId(null); 
@@ -20,6 +23,42 @@ const WorkoutList = () => {
     setIsModalOpen(false);
     setExpandedId(null);
     };
+
+    const openEditModal = (workout:Workout) => {
+    setSelectedWorkout(workout);
+    setExpandedId(null); 
+    setIsEditModalOpen(true);
+};
+
+    const closeEditModal = () => {
+    setIsEditModalOpen(false);
+    setExpandedId(null);
+    };
+
+const handleEditWorkout = async (data: {
+  workoutType: string;
+  durationMinutes: number;
+  notes: string;
+}) => {
+  if (!selectedWorkout) return;
+  await updateWorkout({
+    id: selectedWorkout.id,
+    workoutType: data.workoutType as WorkoutType,
+    durationMinutes: data.durationMinutes,
+    notes: data.notes || '',
+  });
+
+  const refreshed = await getWorkouts();
+  setWorkouts(refreshed.slice(0, 10));
+  closeEditModal();
+};
+const handleDeleteWorkout = async (id: number) => {
+  if (!window.confirm('Are you sure you want to delete this workout?')) return;
+  await deleteWorkout(id);
+  const refreshed = await getWorkouts();
+  setWorkouts(refreshed.slice(0, 10));
+};
+
 
   useEffect(() => {
     let mounted = true;
@@ -100,16 +139,31 @@ const WorkoutList = () => {
                 <span className="detailLabel">Notes:</span>
                 <span className="detailValue">{workout.notes || 'No notes'}</span>
               </div>
+              <div className='editButton'>
+             <button className="addWorkoutButton" onClick={()=>openEditModal(workout)}>Edit Workout</button>
+             <button className="cancelButton" onClick={() => handleDeleteWorkout(workout.id)}>
+              Delete
+              </button>
+              </div>
+
             </div>
           </div>
-        )})}
+        )})}  
       </div>
 
       <AddWorkoutModal
   isOpen={isModalOpen}
   onClose={closeModal}
   onSubmit={handleSubmitWorkout}
-/>
+      />
+
+      <EditWorkoutModal
+  isOpen={isEditModalOpen}
+  onClose={closeEditModal}
+  onSubmit={handleEditWorkout}
+   workout={selectedWorkout}
+      />
+
     </div>
   );
 };
