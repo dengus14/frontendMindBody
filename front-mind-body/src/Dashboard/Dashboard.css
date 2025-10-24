@@ -5,17 +5,20 @@
   padding-top: 30px;   
   min-height: 100vh;
   background-color: #18191C;
+  
 }
+
 
 .dashboardLayout {
   display: flex;
   gap: 24px;
   width: 100%;
-  max-width: 1400px;
+  /* max-width: 1400px; */  /* ← remove this line */
   padding: 0 20px;
   padding-left: 40px;
-  margin: 0 auto;
-  margin-left: 0;
+  margin: 0;
+
+  align-items: flex-start;
 }
 
 .dashboardContent {
