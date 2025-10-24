@@ -1,0 +1,23 @@
+.profileModalContainer {
+  background: rgba(32, 36, 45, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 420px;
+  color: #fff;
+  animation: slideUp 300ms ease;
+}
+
+.profileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.profileBody p {
+  margin: 8px 0;
+  color: #bfc4d3;
+  font-family: 'Inter', sans-serif;
+}

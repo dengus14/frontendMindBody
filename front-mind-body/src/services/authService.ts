@@ -1,4 +1,6 @@
+import api from "./api"; // your axios instance
 // In-memory access token storage
+
 let accessToken: string | null = null;
 
 export const setAccessToken = (token: string | null) => { 
@@ -7,6 +9,12 @@ export const setAccessToken = (token: string | null) => {
 
 export const getAccessToken = () => accessToken;
 
+
+
+export async function getCurrentUser() {
+  const res = await api.get("/user/me");
+  return res.data;
+}
 /** Register */
 export async function register(payload: { username: string; email: string; password: string; }) {
   const res = await fetch('http://localhost:8080/api/auth/register', {

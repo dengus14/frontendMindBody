@@ -1,11 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { User } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import ProfileModal from "../ProfileModal/ProfileModal";
+
+
 import "../Header/Header.css";
 import Logo1 from "../assets/Logo1.png";
 
 const Header = () => {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,17 +50,22 @@ const Header = () => {
               {isAuthenticated && (
         <>
           <button 
-            className="userIcon" 
-            onClick={() => navigate("/profile")}
-            title="Profile"
-          >
-            <User size={30} strokeWidth={2.5} />
-          </button>
+      className="userIcon"
+      onClick={() => setIsProfileOpen(true)}
+      title="Profile"
+    >
+      <User size={20} strokeWidth={2.2} />
+    </button>
 
           <button className="headerButton logoutBtn" onClick={handleLogout}>
             Logout
           </button>
+        <ProfileModal
+      isOpen={isProfileOpen}
+      onClose={() => setIsProfileOpen(false)}
+    />
         </>
+
       )}
 
 
