@@ -66,6 +66,10 @@ const BadgeDetailPanel: React.FC<BadgeDetailPanelProps> = ({ badge, isOpen, onCl
               <div className="infoLabel">Badge Name</div>
               <div className="infoValue">{badge.badge_name}</div>
             </div>
+            <div className="infoSection">
+              <div className="infoLabel">Badge Type</div>
+              <div className="badgeDescription">{badge.requirement_type}</div>
+            </div>
 
             <div className="infoSection">
               <div className="infoLabel">Description</div>
