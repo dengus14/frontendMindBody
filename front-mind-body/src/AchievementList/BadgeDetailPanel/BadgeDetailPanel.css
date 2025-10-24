@@ -1,0 +1,174 @@
+.badgeDetailsBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.badgeDetailsPanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: rgba(32, 36, 45, 0.95);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+  padding: 32px 24px;
+  overflow-y: auto;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 300ms ease;
+}
+
+.badgeDetailsPanel.open {
+  transform: translateX(0);
+}
+
+
+.badgeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.badgeHeaderTitle {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: #5B657E;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* Badge image container */
+.badgeImageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: rgba(24, 27, 34, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.badgeImageLarge {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Badge info sections */
+.badgeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoSection {
+  background: rgba(24, 27, 34, 0.4);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.infoLabel {
+  color: #5B657E;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.infoValue {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+.badgeDescription {
+  color: #bfc4d3;
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.earnedDate {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+}
+
+.requirementText {
+  color: #bfc4d3;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
+
+.requirementValue {
+  color: #1A5CFF;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Custom scrollbar */
+.badgeDetailsPanel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.badgeDetailsPanel::-webkit-scrollbar-track {
+  background: rgba(24, 27, 34, 0.3);
+  border-radius: 10px;
+}
+
+.badgeDetailsPanel::-webkit-scrollbar-thumb {
+  background: rgba(54, 63, 84, 0.6);
+  border-radius: 10px;
+}
+
+.badgeDetailsPanel::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 85, 104, 0.8);
+}

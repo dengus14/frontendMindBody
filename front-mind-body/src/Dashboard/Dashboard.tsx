@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import WorkoutList from '../WorkoutList/WorkoutList';
 import './Dashboard.css';
+import AchievementList from '../AchievementList/AchievementList';
 
 function Dashboard() {
   const authContext = useContext(AuthContext);
@@ -19,9 +20,7 @@ function Dashboard() {
     <div className="dashboardContainer">
       <div className="dashboardLayout">
         <WorkoutList />
-        <div className="dashboardContent">
-          {/* Main content area */}
-        </div>
+        <AchievementList />
       </div>
     </div>
   );
