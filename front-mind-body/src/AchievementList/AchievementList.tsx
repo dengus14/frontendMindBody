@@ -29,21 +29,27 @@ const AchievementList = () => {
       <div className="achievementListContainer">
         <h2 className="achievementTitle">Achievements</h2>
         <div className="userBadges">
-          {badges.map(badge => {
-            const imageUrl = getBadgeImage(badge);
-            if (!imageUrl) return null;
+          {badges.length > 0 ? (
+            badges.map(badge => {
+              const imageUrl = getBadgeImage(badge);
+              if (!imageUrl) return null;
 
-            return (
-              <div 
-                key={badge.badge_id}
-                onClick={() => handleBadgeClick(badge)}
-                style={{ cursor: 'pointer' }}
-              >
-                <img src={imageUrl} alt={badge.badge_name} />
-                <div className="badgeName">{badge.badge_name}</div>
-              </div>
-            );
-          })}
+              return (
+                <div 
+                  key={badge.badge_id}
+                  onClick={() => handleBadgeClick(badge)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <img src={imageUrl} alt={badge.badge_name} />
+                  <div className="badgeName">{badge.badge_name}</div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="noBadges">
+              You have not earned any badges yet
+            </div>
+          )}
         </div>
       </div>
 
