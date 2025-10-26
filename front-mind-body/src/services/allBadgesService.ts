@@ -5,17 +5,19 @@ export type RequirementTypeEnums = 'STREAK' | 'WORKOUT_COUNT'
                                  'TOTAL_WEIGHT_LIFTED' | 'MORNING_WORKOUTS' | 'EVENING_WORKOUTS'
 
 
-export interface UserBadgeDTO{
+export interface BadgeDTO{
     badge_name:string;
     badge_id: number;
     badge_description: string;
     earned_at: Date;
     requirement_type: RequirementTypeEnums;
-    requirement_value: number
+    requirement_value: number;
+    progress_value: number;
+    completed: boolean;
 }
 
-export async function getUserBadges():Promise<UserBadgeDTO[]>{
-    const res = await api.get("/badges/user/all")
+export async function getAllBadges():Promise<BadgeDTO[]>{
+    const res = await api.get("/badges/user/get/all")
     const data = res.data as any[]
     
     console.log('Backend response:', data);
@@ -31,6 +33,8 @@ export async function getUserBadges():Promise<UserBadgeDTO[]>{
         ? new Date(item.earnedAt)
         : new Date(), 
         requirement_type: (item.requirement_type ?? item.requirementType ?? 'WORKOUT_COUNT') as RequirementTypeEnums,
-        requirement_value: Number(item.requirement_value ?? item.requirementValue ?? item.value ?? 0)
+        requirement_value: Number(item.requirement_value ?? item.requirementValue ?? item.value ?? 0),
+        progress_value: Number(item.progress_value ?? item.progress_value ?? item.value ?? 0),
+        completed: Boolean(item.completed ?? false)
   }));
 }
