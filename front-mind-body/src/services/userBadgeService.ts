@@ -12,6 +12,7 @@ export interface UserBadgeDTO{
     requirement_value: number
 }
 
+
 export async function getUserBadges():Promise<UserBadgeDTO[]>{
     const res = await api.get("/badges/user/all")
     const data = res.data as any[]
