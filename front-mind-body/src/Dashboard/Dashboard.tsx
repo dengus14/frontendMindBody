@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import WorkoutList from '../WorkoutList/WorkoutList';
 import './Dashboard.css';
 import AchievementList from '../AchievementList/AchievementList';
+import AllBadgesList from '../AllBadgesList/AllBadgesList';
 
 function Dashboard() {
   const authContext = useContext(AuthContext);
@@ -20,7 +21,11 @@ function Dashboard() {
     <div className="dashboardContainer">
       <div className="dashboardLayout">
         <WorkoutList />
+                <div className="mainCenterDiv">
+          <AllBadgesList />
+        </div>
         <AchievementList />
+
       </div>
     </div>
   );
