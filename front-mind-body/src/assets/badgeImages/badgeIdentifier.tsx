@@ -9,6 +9,6 @@ export const badgeIdentifier:Record<string,string> = {
     "Unstoppable":Day30,
 }
 
-export const getBadgeImage =(badge:UserBadgeDTO):string | undefined =>{
-    return badgeIdentifier[badge.badge_name];
+export const getBadgeImage =(badge:UserBadgeDTO):string =>{
+    return badgeIdentifier[badge.badge_name] || Day3;
 }

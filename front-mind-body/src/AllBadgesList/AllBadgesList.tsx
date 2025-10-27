@@ -53,8 +53,8 @@ function AllBadgesList() {
         {badges.map((badge) => (
           <div key={badge.badge_id} className="badgeItem">
             <span className="badgeDescription">{badge.badge_description}</span>
-            <span className="badgeProgress">
-              {badge.progress_value}/{badge.requirement_value}
+            <span className={`badgeProgress ${badge.completed ? 'completed' : ''}`}>
+              {badge.completed ? 'COMPLETED' : `${badge.progress_value}/${badge.requirement_value}`}
             </span>
           </div>
         ))}

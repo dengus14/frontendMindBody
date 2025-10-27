@@ -15,6 +15,7 @@ export interface AddWorkoutDTO{
     user: User;
     workoutType: WorkoutType;
     durationMinutes: number;
+    notes: string;
 }
 
 export interface User{
@@ -75,7 +76,8 @@ export async function addWorkout(payload: AddWorkoutDTO): Promise<string> {
         const body = {
             user: userForBackend,
             workoutType: payload.workoutType,
-            durationMinutes: payload.durationMinutes
+            durationMinutes: payload.durationMinutes,
+            notes: payload.notes
         };
 
         const res = await api.post('/addWorkout', body);

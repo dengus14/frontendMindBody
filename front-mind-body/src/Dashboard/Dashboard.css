@@ -57,10 +57,12 @@
 
 .mainCenterDiv {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: flex-end;
   flex: 1;
   border: 2px solid #3a3b40;
   border-radius: 12px;
   padding: 20px;
   background-color: #1e1f23;
+  gap: 24px;
 }

@@ -83,7 +83,7 @@ const handleDeleteWorkout = async (id: number) => {
     });
   };
 
-  const handleSubmitWorkout = async (data: { workoutType: string; durationMinutes: number }) => {
+  const handleSubmitWorkout = async (data: { workoutType: string; durationMinutes: number, notes?: string }) => {
     if (!authContext?.user) {
       throw new Error('User not authenticated');
     }
@@ -97,7 +97,8 @@ const handleDeleteWorkout = async (id: number) => {
         last_workout: new Date()
       },
       workoutType: data.workoutType as WorkoutType,
-      durationMinutes: data.durationMinutes
+      durationMinutes: data.durationMinutes,
+      notes: data.notes || ''
     };
 
     await addWorkout(payload);

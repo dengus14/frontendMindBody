@@ -32,7 +32,6 @@ const AchievementList = () => {
           {badges.length > 0 ? (
             badges.map(badge => {
               const imageUrl = getBadgeImage(badge);
-              if (!imageUrl) return null;
 
               return (
                 <div 

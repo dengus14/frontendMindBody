@@ -76,6 +76,13 @@
   white-space: nowrap;
 }
 
+.badgeProgress.completed {
+  color: #4ECDC4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .loadingMessage,
 .errorMessage {
   text-align: center;

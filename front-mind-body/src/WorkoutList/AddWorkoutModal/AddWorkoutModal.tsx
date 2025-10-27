@@ -10,6 +10,7 @@ interface AddWorkoutModalProps {
 const AddWorkoutModal: React.FC<AddWorkoutModalProps> = ({ isOpen, onClose, onSubmit }) => {
   const [workoutType, setWorkoutType] = useState<string>('');
   const [durationMinutes, setDurationMinutes] = useState<string>('');
+  const [notes, setNotes] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -30,9 +31,10 @@ const AddWorkoutModal: React.FC<AddWorkoutModalProps> = ({ isOpen, onClose, onSu
 
     setLoading(true);
     try {
-      await onSubmit({ workoutType, durationMinutes: duration });
+      await onSubmit({ workoutType, durationMinutes: duration, notes });
       setWorkoutType('');
       setDurationMinutes('');
+      setNotes('');
       onClose();
     } catch (err: any) {
       setError(err.message || 'Failed to add workout');
@@ -44,6 +46,7 @@ const AddWorkoutModal: React.FC<AddWorkoutModalProps> = ({ isOpen, onClose, onSu
   const handleClose = () => {
     setWorkoutType('');
     setDurationMinutes('');
+    setNotes('');
     setError('');
     onClose();
   };
@@ -91,6 +94,17 @@ const AddWorkoutModal: React.FC<AddWorkoutModalProps> = ({ isOpen, onClose, onSu
               value={durationMinutes}
               onChange={(e) => setDurationMinutes(e.target.value)}
               min="1"
+              disabled={loading}
+            />
+          </div>
+
+          <div className="formGroup">
+            <label className="formLabel">Notes</label>
+            <textarea
+              className="formInput"
+              placeholder="Add any notes about your workout..."
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
               disabled={loading}
             />
           </div>
