@@ -94,3 +94,72 @@
 .errorMessage {
   color: #ff4444;
 }
+.topButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.topButtons button {
+  background-color: #222;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.topButtons button:hover {
+  background-color: #333;
+}
+
+.activeButton {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.allBadgesTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.titleButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* base button */
+.tabButton {
+  padding: 14px 28px; /* bigger click area */
+  font-size: 18px; /* larger text */
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #2a2b30; /* matches your card color */
+  color: #e1e3e8;
+  border: 2px solid #3a3b40;
+  transition: all 0.2s ease-in-out;
+}
+
+/* hover effect */
+.tabButton:hover:not(.active) {
+  background-color: #33343a;
+  border-color: #4a4b50;
+}
+
+/* active (selected) tab */
+.tabButton.active {
+  background-color: #122454; /* matches your blue accent */
+  border-color: #1A5CFF;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(26, 92, 255, 0.5);
+}
+
+

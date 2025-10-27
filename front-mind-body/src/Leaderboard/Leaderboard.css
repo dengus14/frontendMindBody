@@ -1,0 +1,49 @@
+.leaderboardContainer {
+  background-color: #181818;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.leaderboardTitle {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.divider {
+  height: 2px;
+  background-color: #333;
+  margin-bottom: 15px;
+}
+
+.leaderboardTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboardTable th,
+.leaderboardTable td {
+  padding: 10px;
+  text-align: left;
+}
+
+.leaderboardTable th {
+  background-color: #222;
+  font-weight: 600;
+}
+
+.leaderboardTable tr:nth-child(even) {
+  background-color: #1f1f1f;
+}
+
+.leaderboardTable tr:hover {
+  background-color: #333;
+}
+
+.errorMessage {
+  color: #ff4d4d;
+  text-align: center;
+}
