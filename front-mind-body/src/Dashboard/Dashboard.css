@@ -8,17 +8,14 @@
   
 }
 
-
 .dashboardLayout {
   display: flex;
   gap: 24px;
   width: 100%;
-  /* max-width: 1400px; */  /* ← remove this line */
   padding: 0 20px;
-  padding-left: 40px;
   margin: 0;
-
   align-items: flex-start;
+  justify-content: center; /* Center the content */
 }
 
 .dashboardContent {
@@ -58,11 +55,13 @@
 .mainCenterDiv {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  flex: 1;
+  align-items: flex-start;
+  flex: 0 0 auto; /* Changed from flex: 1 - don't grow */
   border: 2px solid #3a3b40;
   border-radius: 12px;
   padding: 20px;
   background-color: #1e1f23;
   gap: 24px;
+  height: calc(100vh - 200px);
+  overflow: hidden;
 }
