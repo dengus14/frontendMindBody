@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   color: #ffffff;
+  align-self: flex-end; /* Push this component to the bottom */
 }
 
 .userStatsTitle {
