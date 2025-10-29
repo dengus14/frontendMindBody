@@ -3,7 +3,7 @@
   color: white;
   padding: 20px;
   border-radius: 10px;
-  width: 100%;
+  width: 90%;
   max-height: 500px;
   overflow-y: auto;
 }
@@ -27,7 +27,7 @@
 .leaderboardTable th,
 .leaderboardTable td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 .leaderboardTable th {

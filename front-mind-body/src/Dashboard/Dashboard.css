@@ -15,7 +15,7 @@
   padding: 0 20px;
   margin: 0;
   align-items: flex-start;
-  justify-content: center; /* Center the content */
+  justify-content: center; 
 }
 
 .dashboardContent {
@@ -56,7 +56,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex: 0 0 auto; /* Changed from flex: 1 - don't grow */
+  flex: 0 0 auto; 
   border: 2px solid #3a3b40;
   border-radius: 12px;
   padding: 20px;
