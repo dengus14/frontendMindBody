@@ -1,10 +1,14 @@
 .achievementListContainer {
   border-radius: 12px;
   padding: 20px;
-  width: 320px;
+  width: auto; /* Changed from 320px to auto */
+  max-width: 320px;
   max-height: 600px;
   overflow-y: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.badgeName {
+  color:white;
 }
 
 .achievementTitle {
@@ -36,11 +40,6 @@
   min-height: 100px;
 }
 
-.noBadges{
-    display: flex;
-    align-items: center;
-}
-
 .userBadges > div {
   flex: 0 0 calc((100% - 32px) / 3); 
   display: flex;
@@ -49,8 +48,9 @@
 }
 
 .userBadges img {
-  width: 80px;
-  height: 80px;
+  width: 80%; /* Changed from 80px to 100% */
+  height: auto; /* Changed from 80px to auto */
+  max-width: 80px; /* Cap at 80px */
   object-fit: cover;
   border-radius: 8px;
 }

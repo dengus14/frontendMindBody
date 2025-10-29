@@ -35,8 +35,6 @@ function Leaderboard() {
             <th>Rank</th>
             <th>Username</th>
             <th>Points</th>
-            <th>Longest Streak</th>
-            <th>Total Minutes</th>
           </tr>
         </thead>
         <tbody>
@@ -45,8 +43,6 @@ function Leaderboard() {
               <td>{i + 1}</td>
               <td>{u.username}</td>
               <td>{u.points ?? 0}</td>
-              <td>{u.longest_streak ?? 0}</td>
-              <td>{u.totalMinutes ?? 0}</td>
             </tr>
           ))}
         </tbody>
