@@ -65,3 +65,10 @@
   height: calc(100vh - 200px);
   overflow: hidden;
 }
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
