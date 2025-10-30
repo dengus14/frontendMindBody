@@ -4,6 +4,7 @@ import './Dashboard.css';
 import AchievementList from '../AchievementList/AchievementList';
 import AllBadgesList from '../AllBadgesList/AllBadgesList';
 import UserStats from '../UserStats/UserStats';
+import ChallengeList from '../ChallengeList/ChallengeList';
 
 function Dashboard() {
 
@@ -12,7 +13,10 @@ function Dashboard() {
       <div className="dashboardLayout">
         <WorkoutList />
         <div className="mainCenterDiv">
-          <UserStats />
+          <div className="leftColumn">
+            <ChallengeList />
+            <UserStats />
+          </div>
           <AllBadgesList />
         </div>
         <AchievementList />
